@@ -67,12 +67,52 @@ end
 
 # 2.0
 def hello(name)
+  
+  # simple string concatenation
   return "Hello, #{name}"
 end
 
 # 2.1
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  
+  # empty string case
+  if(s.empty?)
+    return false
+  end
+  
+  # first character is not an alphanumeric symbol case
+  # POSIX bracket expressions
+  # adapted from https://www.regular-expressions.info/posixbrackets.html
+  if(!(s[0] =~ /[[:alnum:]]/))
+    return false
+  end
+  
+  # we can use a case statement to handle this
+  case s[0]
+  when "a"
+    return false
+  when "A"
+    return false
+  when "e"
+    return false
+  when "E"
+    return false
+  when "i"
+    return false
+  when "I"
+    return false
+  when "O"
+    return false
+  when "o"
+    return false
+  when "u"
+    return false
+  when "U"
+    return false
+  # Not a vowel, therefore true
+  else 
+    return true
+  end
 end
 
 # 2.2
