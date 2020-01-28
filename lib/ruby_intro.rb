@@ -117,12 +117,62 @@ end
 
 # 2.2
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  # 4 is the third order of any binary #
+  # if any number ends in 00, then it is a multiple of 4
+  if(/^[10]*00$/.match?(s))
+    return true
+  elsif(s == "0")
+    return true
+  elsif(s == "00")
+    return true
+  else
+    return false
+  end
 end
 
 # Part 3
 
 # 3.1
 class BookInStock
-# YOUR CODE HERE
+  
+  # initializer
+  def initialize(i, p)
+    if (i == nil or i.size() == 0)
+      raise ArgumentError.new('There must be an ISBN number...')
+    elsif(p <= 0.00)
+      raise ArgumentError.new('The price must be greater than zero...')
+    end
+    @isbn = i
+    @price = p
+  end
+  
+  # getters
+  def isbn()
+    return @isbn
+  end
+  
+  def price()
+    return @price
+  end
+  
+  # setters
+  def isbn=(new_value)
+    if (new_value == nil or new_value.size == 0)
+      raise ArgumentError.new('There must be an ISBN number...')
+    end
+    @isbn = new_value
+  end
+  
+  def price=(new_value)
+    if(new_value <= 0.00)
+      raise ArgumentError.new('The price must be greater than zero...')
+    end
+    @price = new_value
+  end
+  
+  #price as string
+  def price_as_string()
+    str = "$%0.2f" % [@price]
+    return str
+  end
 end
